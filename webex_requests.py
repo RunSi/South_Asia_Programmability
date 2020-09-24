@@ -2,23 +2,24 @@ import requests
 import json
 
 token = ''
+name = ''
 
 
-def _headers(token):
+def headers(token):
 
     return {'Content-type': 'application/json',
             'Authorization': 'Bearer ' + token}
 
-def _webex_api(noun):
+def webex_api(noun):
 
     return ''.join(('https://webexapis.com/v1/', noun))
 
 def webex_get_me(name):
-    uri = _webex_api(name)
+    uri = webex_api(name)
     return uri
 
 uri = webex_get_me('people/me')
-r = requests.get(uri, headers=_headers(token))
+r = requests.get(uri, headers=headers(token))
 
 # dir(r)
 #
